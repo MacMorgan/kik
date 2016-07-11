@@ -26,12 +26,12 @@ defmodule Kik do
   end
 end
 
-defmodule Bot.Kik.Message do
+defmodule Kik.Message do
   @derive [Poison.Encoder]
 
   defstruct [:body, :chatId, :type, :from]
 
-  @type t :: %Bot.Kik.Message{
+  @type t :: %Kik.Message{
     body: String.t,
     chatId: String.t,
     type: String.t,
