@@ -33,7 +33,7 @@ defmodule Kik.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    d = [{:httpotion, "~> 2.2"}]
+    d = [{:httpotion, "~> 3.0"}]
 
     if Mix.env == :test do
       [{:coverex, "~> 1.4.8", only: :test}, {:poison, "~> 2.2.0", override: true} | d]
