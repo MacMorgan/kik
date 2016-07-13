@@ -21,7 +21,7 @@ defmodule Kik.RequestManager do
 
   def process_request_body(body) do
     Logger.debug "--BEGIN--"
-    Logger.debug body
+    Logger.debug body |> Poison.encode!
     Logger.debug "-- END --"
     body |> Poison.encode!
   end
