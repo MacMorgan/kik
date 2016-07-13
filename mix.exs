@@ -7,7 +7,7 @@ defmodule Kik.Mixfile do
      source_url: "https://github.com/macmorgan/kik",
      version: "0.1.0",
      docs: [ extras: ["README.md"] ],
-     elixir: "~> 1.0",
+     elixir: "~> 1.1",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
      test_coverage: [tool: Coverex.Task, coveralls: true],
