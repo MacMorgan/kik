@@ -25,16 +25,3 @@ defmodule Kik do
     body |> Poison.decode!
   end
 end
-
-defmodule Kik.Message do
-  @derive [Poison.Encoder]
-
-  defstruct [:body, :chatId, :type, :from]
-
-  @type t :: %Kik.Message{
-    body: String.t,
-    chatId: String.t,
-    type: String.t,
-    from: String.t
-  }
-end
