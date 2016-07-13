@@ -44,6 +44,10 @@ defmodule Kik.Models.UserProfile do
 
   defstruct [:firstName, :lastName, :profilePicUrl, :profilePicLastModified]
 
+  def parse(json) do
+    Poison.decode!(json, as: %Kik.Models.UserProfile{})
+  end
+
   @type t :: %Kik.Models.UserProfile{
     firstName: String.t,
     lastName: String.t,

@@ -18,6 +18,10 @@ defmodule Kik do
     manager.post("config", [body: newConfig])
   end
 
+  def user_profile(username) do
+    manager.get("user/" <> username).body |> Kik.Models.UserProfile.parse
+  end
+
   def send(to, chatId, body) do
     newMessage = %{
       "messages": [%{
