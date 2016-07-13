@@ -8,6 +8,7 @@ defmodule Kik.RequestManager do
   defp apikey, do: Application.get_env(:kik, :apikey)
 
   def process_url(url) do
+    Logger.debug "https://api.kik.com/v1/" <> url
     "https://api.kik.com/v1/" <> url
   end
 
