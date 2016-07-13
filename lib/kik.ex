@@ -7,15 +7,20 @@ defmodule Kik do
   end
 
   def config(webhook) do
-    Kik.RequestManager.post!("config", [body: %{
-      "webhook": webhook,
-      "features": %{
-        "manuallySendReadReceipts": false,
-        "receiveReadReceipts": false,
-        "receiveDeliveryReceipts": false,
-        "receiveIsTyping": false
-      }
-    }])
+    Kik.RequestManager.post(
+      "config",
+      [
+        body: %{
+          "webhook": "https://0ef0244d.ngrok.io/kik/webhook",
+          "features": %{
+            "manuallySendReadReceipts": false,
+            "receiveReadReceipts": false,
+            "receiveDeliveryReceipts": false,
+            "receiveIsTyping": false
+          }
+        }
+      ]
+    )
   end
 
   defp manager do
