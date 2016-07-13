@@ -2,11 +2,11 @@ defmodule Kik do
   require Logger
 
   def config do
-    manager.get("config").body
+    Kik.Models.Config.parse(manager.get("config").body)
   end
 
   def config(webhook) do
-    config = %{
+    newConfig = %{
       "webhook": webhook,
       "features": %{
         "manuallySendReadReceipts": false,
@@ -15,8 +15,7 @@ defmodule Kik do
         "receiveIsTyping": false
       }
     }
-    body = Poison.encode!(config)
-    Logger.debug(body)
+    body = Poison.encode!(newConfig)
     manager.post!("config", [body: body])
   end
 
