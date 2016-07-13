@@ -22,6 +22,13 @@ defmodule Kik do
     manager.get("user/" <> username).body |> Kik.Models.UserProfile.parse
   end
 
+  def code(data) do
+    newData = %{
+      "data": data
+    }
+    manager.post("code", [body: newData]).body |> Kik.Models.Code.parse
+  end
+
   def send(to, chatId, body) do
     newMessage = %{
       "messages": [%{

@@ -61,6 +61,10 @@ defmodule Kik.Models.Code do
 
   defstruct [:id]
 
+  def parse(json) do
+    Poison.decode!(json, as: %Kik.Models.Code{})
+  end
+
   @type t :: %Kik.Models.Code{
     id: String.t
   }
