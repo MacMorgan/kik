@@ -34,6 +34,8 @@ defmodule Kik do
     manager.post("message", [body: newMessage])
   end
 
+  ### TODO: Broadcast
+
   defp manager do
     Application.get_env(:kik, :request_manager) || Kik.RequestManager
   end
