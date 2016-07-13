@@ -6,7 +6,7 @@ defmodule Kik do
   end
 
   def config(webhook) do
-    manager.post!("config", [body: %{
+    Kik.RequestManager.post!("config", [body: %{
       "webhook": webhook,
       "features": %{
         "manuallySendReadReceipts": false,
