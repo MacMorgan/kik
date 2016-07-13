@@ -16,7 +16,19 @@ defmodule Kik do
       }
     }
     body = Poison.encode!(newConfig)
-    manager.post!("config", [body: body])
+    manager.post("config", [body: body])
+  end
+
+  def send(to, chatId, body)
+    newMessage = %{
+      "messages": [%{
+        "body" => body,
+        "to" => to,
+        "type" => "text",
+        "chatId" => chatId
+      }]
+    }
+    manager.post("message", Poison.encode!(newMessage))
   end
 
   defp manager do
