@@ -1,10 +1,12 @@
 defmodule Kik do
+  require Logger
 
   def config do
     Kik.Models.Config.parse(manager.get("config").body)
   end
 
   def config(webhook) do
+    Logger.debug webhook
     manager.post("config", [body: %{
       "webhook": webhook,
       "features": %{
