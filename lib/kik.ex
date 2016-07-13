@@ -5,17 +5,19 @@ defmodule Kik do
     manager.get("config").body |> Kik.Models.Config.parse
   end
 
+  def config(newConfig) when is_map(newConfig), do: manager.post("config", [body: newConfig])
+
   def config(webhook) do
-    newConfig = %{
-      "webhook": webhook,
-      "features": %{
-        "manuallySendReadReceipts": false,
-        "receiveReadReceipts": false,
-        "receiveDeliveryReceipts": false,
-        "receiveIsTyping": false
+    %Kik.Models.Config{
+      webhook: webhook,
+      features: %Kik.Models.ConfigFeatures{
+        manuallySendReadReceipts: false,
+        receiveReadReceipts: false,
+        receiveDeliveryReceipts: false,
+        receiveIsTyping: false
       }
     }
-    manager.post("config", [body: newConfig])
+    |> config
   end
 
   def user_profile(username) do
@@ -45,9 +47,11 @@ defmodule Kik do
     |> send
   end
 
-
-
   ### TODO: Broadcast
+
+  defp process_response(response) do
+    response
+  end
 
   defp manager do
     Application.get_env(:kik, :request_manager) || Kik.RequestManager

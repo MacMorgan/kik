@@ -1,3 +1,13 @@
+defmodule Kik.Models.Messages do
+  @derive [Poison.Encoder]
+
+  defstruct [:messages]
+
+  @type t :: %Kik.Models.Messages{
+    messages: [Kik.Models.Message.t]
+  }
+end
+
 defmodule Kik.Models.Message do
   @derive [Poison.Encoder]
 
