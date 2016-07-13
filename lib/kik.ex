@@ -19,7 +19,7 @@ defmodule Kik do
     manager.post("config", [body: body])
   end
 
-  def send(to, chatId, body)
+  def send(to, chatId, body) do
     newMessage = %{
       "messages": [%{
         "body" => body,
