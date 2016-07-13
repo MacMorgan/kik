@@ -31,8 +31,10 @@ defmodule Kik do
     manager.post("code", [body: newData]).body |> Kik.Models.Code.parse
   end
 
+  def send(message) when is_map(message), do: manager.post("message", [body: message])
+
   def send(to, chatId, body) do
-    newMessage = %{
+    %{
       "messages": [%{
         "body" => body,
         "to" => to,
@@ -40,8 +42,10 @@ defmodule Kik do
         "chatId" => chatId
       }]
     }
-    manager.post("message", [body: newMessage])
+    |> send
   end
+
+
 
   ### TODO: Broadcast
 
