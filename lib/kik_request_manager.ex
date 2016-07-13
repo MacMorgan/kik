@@ -19,8 +19,8 @@ defmodule Kik.RequestManager do
     Dict.put options, :basic_auth, { username, apikey }
   end
 
-  def process_request_body(body) do
-    body ###|> Poison.encode!
+  def process_request_body(body) when not is_nil(body) do
+    body |> Poison.encode!
   end
 
   def process_response_body(body) do
