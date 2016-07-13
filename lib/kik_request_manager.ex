@@ -20,7 +20,7 @@ defmodule Kik.RequestManager do
   end
 
   def process_request_body(body) do
-    body |> Poison.encode!
+    body ###|> Poison.encode!
   end
 
   def process_response_body(body) do
