@@ -1,27 +1,15 @@
 defmodule Kik do
-  use HTTPotion.Base
 
-  defp username, do: Application.get_env(:kik, :username)
-
-  defp apikey, do: Application.get_env(:kik, :apikey)
-
-  def process_url(url) do
-    "https://api.kik.com/v1/" <> url
+  def config do
+    manager.get("config"), as: %Kik.Models.Config{}
   end
 
-  def process_request_headers(headers) do
-    Dict.put headers, :"Content-Type", "application/json"
+  def config(config) do
+    manager.post("config", [body: config])
   end
 
-  def process_options(options) do
-    Dict.put options, :basic_auth, { username, apikey }
+  defp manager do
+    Application.get_env(:kik, :request_manager) || Kik.RequestManager
   end
 
-  def process_request_body(body) do
-    body |> Poison.encode!
-  end
-
-  def process_response_body(body) do
-    body |> Poison.decode!
-  end
 end
