@@ -23,6 +23,10 @@ defmodule Kik.RequestManager do
     body |> Poison.encode!
   end
 
+  def process_request_body(body) do
+    body
+  end
+
   def process_response_body(body) do
     body # |> Poison.encode!
   end
