@@ -8,7 +8,6 @@ defmodule Kik.RequestManager do
   defp apikey, do: Application.get_env(:kik, :apikey)
 
   def process_url(url) do
-    Logger.debug "https://api.kik.com/v1/" <> url
     "https://api.kik.com/v1/" <> url
   end
 
@@ -25,7 +24,9 @@ defmodule Kik.RequestManager do
   end
 
   def process_response_body(body) do
+    Logger.debug "--BEGIN--"
     Logger.debug body
+    Logger.debug "-- END --"
     body # |> Poison.encode!
   end
 end
