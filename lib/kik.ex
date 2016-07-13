@@ -1,7 +1,7 @@
 defmodule Kik do
 
   def config do
-    manager.get("config")
+    manager.get("config").body
   end
 
   def config(config) do
