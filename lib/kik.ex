@@ -1,5 +1,6 @@
 defmodule Kik do
   require Logger
+  require Kik.RequestManager
 
   def config do
     Kik.Models.Config.parse(manager.get("config").body)
