@@ -53,7 +53,7 @@ defmodule Kik.Models.Code do
 
   defstruct [:id]
 
-  @type t :: %Kik.Models.UserProfile{
+  @type t :: %Kik.Models.Code{
     id: String.t
   }
 end
