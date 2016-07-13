@@ -15,8 +15,7 @@ defmodule Kik do
         "receiveIsTyping": false
       }
     }
-    body = Poison.encode!(newConfig)
-    manager.post("config", [body: body])
+    manager.post("config", [body: newConfig])
   end
 
   def send(to, chatId, body) do
