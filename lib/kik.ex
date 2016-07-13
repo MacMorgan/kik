@@ -1,5 +1,5 @@
 defmodule Kik do
-
+  
   def config do
     manager.get("config"), as: %Kik.Models.Config{}
   end

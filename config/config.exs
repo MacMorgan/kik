@@ -9,12 +9,14 @@ case Mix.env do
   :test ->
     config :kik,
       username: "USERNAME",
-      api_key: "API_KEY"
+      api_key: "API_KEY",
+      request_manager: Kik.RequestManager
 
   :dev ->
     config :kik,
       username: "USERNAME",
-      api_key: "API_KEY"
+      api_key: "API_KEY",
+      request_manager: Kik.RequestManager
 
   _ -> true
 end
