@@ -2,7 +2,7 @@ defmodule Kik do
   require Logger
 
   def config do
-    manager.get("config").body[:webhook]
+    manager.get("config")
   end
 
   def config(webhook) do
