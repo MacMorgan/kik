@@ -1,6 +1,7 @@
 defmodule Kik.RequestManager do
   use HTTPotion.Base
   require Logger
+  require Poison
 
   defp username, do: Application.get_env(:kik, :username)
 
@@ -16,5 +17,9 @@ defmodule Kik.RequestManager do
 
   def process_options(options) do
     Dict.put options, :basic_auth, { username, apikey }
+  end
+
+  def process_request_body(body) do
+    body |> Poison.encode!
   end
 end
