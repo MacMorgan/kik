@@ -16,6 +16,7 @@ defmodule Kik do
       }
     }
     body = Poison.encode!(config)
+    Logger.debug(body)
     manager.post!("config", [body: body])
   end
 
