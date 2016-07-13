@@ -11,13 +11,14 @@ end
 defmodule Kik.Models.Message do
   @derive [Poison.Encoder]
 
-  defstruct [:body, :chatId, :type, :from]
+  defstruct [:body, :chatId, :type, :from, :to]
 
   @type t :: %Kik.Models.Message{
     body: String.t,
     chatId: String.t,
     type: String.t,
-    from: String.t
+    from: String.t,
+    to: String.t
   }
 end
 

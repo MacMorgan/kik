@@ -27,21 +27,21 @@ defmodule Kik do
   def code(data) when is_map(data), do: Poison.encode!(data) |> code
 
   def code(data) do
-    newData = %{
+    newCode = %{
       "data": data
     }
-    manager.post("code", [body: newData]).body |> Kik.Models.Code.parse
+    manager.post("code", [body: newCode]).body |> Kik.Models.Code.parse
   end
 
   def send(message) when is_map(message), do: manager.post("message", [body: message])
 
   def send(to, chatId, body) do
-    %{
-      "messages": [%{
-        "body" => body,
-        "to" => to,
-        "type" => "text",
-        "chatId" => chatId
+    %Kik.Models.Messages{
+      messages: [%Kik.Models.Message{
+        body: body,
+        to: to,
+        type: "text",
+        chatId: chatId
       }]
     }
     |> send
