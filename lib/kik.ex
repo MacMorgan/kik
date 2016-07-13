@@ -22,6 +22,8 @@ defmodule Kik do
     manager.get("user/" <> username).body |> Kik.Models.UserProfile.parse
   end
 
+  def code(data) when is_map(data), do: Poison.encode!(data) |> code
+
   def code(data) do
     newData = %{
       "data": data
