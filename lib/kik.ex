@@ -2,7 +2,7 @@ defmodule Kik do
   require Logger
 
   def config do
-    manager.get("config") |> Kik.Models.Config.parse
+    manager.get("config").body |> Kik.Models.Config.parse
   end
 
   def config(webhook) do
