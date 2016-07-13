@@ -28,7 +28,7 @@ defmodule Kik do
         "chatId" => chatId
       }]
     }
-    manager.post("message", Poison.encode!(newMessage))
+    manager.post("message", [body: Poison.encode!(newMessage)])
   end
 
   defp manager do
