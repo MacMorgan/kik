@@ -1,7 +1,7 @@
 defmodule Kik do
-
+  
   def config do
-    Poison.decode!(manager.get("config").body, as: %Kik.Models.Config{})
+    Kik.Models.Config.parse(manager.get("config").body)
   end
 
   def config(config) do

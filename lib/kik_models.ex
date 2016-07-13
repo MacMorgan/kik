@@ -16,6 +16,10 @@ defmodule Kik.Models.Config do
 
   defstruct [:webhook, :features]
 
+  def parse(json) do
+    Poison.decode!(json, as: %Kik.Models.Config{})
+  end
+
   @type t :: %Kik.Models.Config{
     webhook: String.t,
     features: Kik.Models.ConfigFeatures.t
