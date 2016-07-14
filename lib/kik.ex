@@ -40,6 +40,7 @@ defmodule Kik do
   def send(message) when is_map(message), do: manager.post!("message", [body: message]) |> process_response
 
   def send(to, chatId, body) do
+    Logger.debug "GOT HERE - 1"
     message = %Kik.Models.Messages{
       messages: [%Kik.Models.Message{
         body: body,
@@ -49,6 +50,7 @@ defmodule Kik do
       }]
     }
     manager.post!("message", [body: message]) |> process_response
+    Logger.debug "GOT HERE - 2"
   end
 
   ### TODO: Broadcast
