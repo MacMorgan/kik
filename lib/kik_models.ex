@@ -11,23 +11,23 @@ end
 defmodule Kik.Models.Message do
   @derive [Poison.Encoder]
 
-  defstruct [:body, :chatId, :type, :from, :to, :id, :mention, :delay, :readReceiptRequested, :timestamp, :participants, :typeTime, :keyboards]
+  defstruct [:body, :chatId, :type, :from, :to] #, :id, :mention, :delay, :readReceiptRequested, :timestamp, :participants, :typeTime, :keyboards]
 
   @type t :: %Kik.Models.Message{
     body: String.t,
     chatId: String.t,
     type: String.t,
     from: String.t,
-    to: String.t,
-    id: String.t,
-    mention: String.t,
-    delay: integer,
-    readReceiptRequested: Boolean.t,
-    timestamp: integer,
-    participants: [String.t],
-    typeTime: integer,
-    keyboards: [],
-    
+    to: String.t #,
+    #id: String.t,
+    #mention: String.t,
+    #delay: integer,
+    #readReceiptRequested: Boolean.t,
+    #timestamp: integer,
+    #participants: [String.t],
+    #typeTime: integer,
+    #keyboards: [],
+
 
   }
 end
