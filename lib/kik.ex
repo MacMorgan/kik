@@ -11,14 +11,14 @@ defmodule Kik do
 
   def config(newConfig) when is_map(newConfig), do: manager.post("config", [body: newConfig]) |> process_response
 
-  def config(webhook) do
+  def config(webhook, manuallySendReadReceipts \\ false, receiveReadReceipts \\ false, receiveDeliveryReceipts \\ false, receiveIsTyping \\ false) do
     %Kik.Models.Config{
       webhook: webhook,
       features: %Kik.Models.ConfigFeatures{
-        manuallySendReadReceipts: false,
-        receiveReadReceipts: false,
-        receiveDeliveryReceipts: false,
-        receiveIsTyping: false
+        manuallySendReadReceipts: manuallySendReadReceipts,
+        receiveReadReceipts: receiveReadReceipts,
+        receiveDeliveryReceipts: receiveDeliveryReceipts,
+        receiveIsTyping: receiveIsTyping
       }
     }
     |> config
@@ -40,7 +40,7 @@ defmodule Kik do
   def send(message) when is_map(message), do: manager.post("message", [body: message]) |> process_response
 
   def send(to, chatId, body) do
-    message = %Kik.Models.Messages{
+    %Kik.Models.Messages{
       messages: [%Kik.Models.Message{
         body: body,
         to: to,
