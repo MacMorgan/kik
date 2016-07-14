@@ -9,7 +9,7 @@ defmodule Kik do
     manager.get("config").body |> Kik.Models.Config.parse
   end
 
-  def config(newConfig) when is_map(newConfig), do: manager.post("config", [body: newConfig]) |> process_response
+  def config(%Kik.Models.Config{} = newConfig), do: manager.post("config", [body: newConfig]) |> process_response
 
   def config(webhook, manuallySendReadReceipts \\ false, receiveReadReceipts \\ false, receiveDeliveryReceipts \\ false, receiveIsTyping \\ false) do
     %Kik.Models.Config{
@@ -37,7 +37,7 @@ defmodule Kik do
     manager.post("code", [body: newCode]).body |> Kik.Models.Code.parse
   end
 
-  def send(message) when is_map(message), do: manager.post("message", [body: message]) |> process_response
+  def send(%Kik.Models.Messages{} = message), do: manager.post("message", [body: message]) |> process_response
 
   def send(to, chatId, body) do
     %Kik.Models.Messages{
