@@ -37,7 +37,7 @@ defmodule Kik do
     manager.post("code", [body: newCode]).body |> Kik.Models.Code.parse
   end
 
-  def send(message) when is_map(message), do: manager.post("message", [body: message])
+  def send(message) when is_map(message), do: manager.post("message", [body: message]) |> process_response
 
   def send(to, chatId, body) do
     %Kik.Models.Messages{
@@ -58,7 +58,7 @@ defmodule Kik do
   end
 
   defp process_response(%HTTPotion.Response{status_code: 200, body: body}) do
-    body |> Poison.decode! ### TODO: Decode to specific type
+    body
   end
 
   defp process_response(%HTTPotion.Response{status_code: 400}) do
