@@ -53,32 +53,32 @@ defmodule Kik do
     response
   end
 
-  defp process_response(%HTTPotion.Response{} = response) when response.status_code == 200 do
-    response |> Poison.decode! ### TODO: Decode to specific type
+  defp process_response(%HTTPotion.Response{status_code: 200, body: body}) do
+    body |> Poison.decode! ### TODO: Decode to specific type
   end
 
-  defp process_response(%HTTPotion.Response{} = response) when response.status_code == 400 do
-    response ### TODO: Bad Request
+  defp process_response(%HTTPotion.Response{status_code: 400, body: body}) do
+    body ### TODO: Bad Request
   end
 
-  defp process_response(%HTTPotion.Response{} = response) when response.status_code == 401 do
-    response ### TODO: Unauthorized
+  defp process_response(%HTTPotion.Response{status_code: 401, body: body}) do
+    body ### TODO: Unauthorized
   end
 
-  defp process_response(%HTTPotion.Response{} = response) when response.status_code == 403 do
-    response ### TODO: Forbidden
+  defp process_response(%HTTPotion.Response{status_code: 403, body: body}) do
+    body ### TODO: Forbidden
   end
 
-  defp process_response(%HTTPotion.Response{} = response) when response.status_code == 429 do
-    response ### TODO: Rate Limit Exceeded
+  defp process_response(%HTTPotion.Response{status_code: 429, body: body}) do
+    body ### TODO: Rate Limit Exceeded
   end
 
-  defp process_response(%HTTPotion.Response{} = response) when response.status_code == 500 do
-    response ### TODO: Internal Server Error
+  defp process_response(%HTTPotion.Response{status_code: 500, body: body}) do
+    body ### TODO: Internal Server Error
   end
 
-  defp process_response(%HTTPotion.Response{} = response) when response.status_code == 503 do
-    response ### TODO: Service Unavailable
+  defp process_response(%HTTPotion.Response{status_code: 503, body: body}) do
+    body ### TODO: Service Unavailable
   end
 
   defp manager do
