@@ -37,7 +37,7 @@ defmodule Kik do
     manager.post("code", [body: newCode]).body |> Kik.Models.Code.parse
   end
 
-  def send(message) when is_map(message), do: manager.post("message", [body: message]) |> process_response
+  def send(message) when is_map(message), do: manager.post!("message", [body: message]) |> process_response
 
   def send(to, chatId, body) do
     %Kik.Models.Messages{
