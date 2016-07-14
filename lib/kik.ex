@@ -53,12 +53,12 @@ defmodule Kik do
 
   ### TODO: Broadcast
 
-  defp process_response(%HTTPotion.ErrorResponse{} = response) do
-    response
-  end
-
   defp process_response(%HTTPotion.Response{status_code: 200, body: body}) do
     body
+  end
+
+  defp process_response(%HTTPotion.ErrorResponse{message: message}) do
+    %Kik.Error{message: message}
   end
 
   defp process_response(%HTTPotion.Response{status_code: 400}) do
