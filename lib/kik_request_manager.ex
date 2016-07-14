@@ -20,7 +20,6 @@ defmodule Kik.RequestManager do
   end
 
   def process_request_body(body) when is_map(body) do
-    Logger.debug Poison.encode!(body)
     body |> Poison.encode!
   end
 

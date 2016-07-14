@@ -38,7 +38,6 @@ defmodule Kik do
   end
 
   def send(%Kik.Models.Messages{} = message) do
-    Logger.debug "SENDING"
     manager.post("message", [body: message])
     |> process_response
   end
