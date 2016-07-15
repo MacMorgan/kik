@@ -13,6 +13,10 @@ defmodule Kik.Models.Message do
 
   defstruct [:body, :chatId, :type, :to] #, :from, :id, :mention, :delay, :readReceiptRequested, :timestamp, :participants, :typeTime, :keyboards]
 
+  def parse(json) do
+    Poison.decode!(json, as: %Kik.Models.Message{})
+  end
+
   @type t :: %Kik.Models.Message{
     body: String.t,
     chatId: String.t,
