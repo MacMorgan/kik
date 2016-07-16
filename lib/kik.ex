@@ -43,6 +43,7 @@ defmodule Kik do
   end
 
   def send(%Kik.Models.Message{} = message) do
+    Logger.debug "GOT HERE"
     [message]
     |> send
   end
