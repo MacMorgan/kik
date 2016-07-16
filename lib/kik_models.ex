@@ -21,7 +21,7 @@ defmodule Kik.Models.Message do
     body: String.t,
     chatId: String.t,
     type: String.t,
-    #from: String.t,
+    from: String.t,
     to: String.t #,
     #id: String.t,
     #mention: String.t,
