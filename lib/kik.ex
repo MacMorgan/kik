@@ -48,13 +48,11 @@ defmodule Kik do
   end
 
   def send(to, chatId, body) do
-    %Kik.Models.Messages{
-      messages: [%Kik.Models.Message{
-        body: body,
-        to: to,
-        type: "text",
-        chatId: chatId
-      }]
+    %Kik.Models.Message{
+      body: body,
+      to: to,
+      type: "text",
+      chatId: chatId
     }
     |> send
   end
