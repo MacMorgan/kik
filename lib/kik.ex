@@ -37,9 +37,14 @@ defmodule Kik do
     manager.post("code", [body: newCode]).body |> Kik.Models.Code.parse
   end
 
-  def send(%Kik.Models.Messages{} = message) do
-    manager.post("message", [body: message])
+  def send(%Kik.Models.Messages{} = messages) do
+    manager.post("message", [body: messages])
     |> process_response
+  end
+
+  def send(%Kik.Models.Message{} = message) do
+    [message]
+    |> send
   end
 
   def send(to, chatId, body) do
