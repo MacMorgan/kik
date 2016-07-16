@@ -11,7 +11,7 @@ end
 defmodule Kik.Models.Message do
   @derive [Poison.Encoder]
 
-  defstruct [:body, :chatId, :type, :to] #, :from, :id, :mention, :delay, :readReceiptRequested, :timestamp, :participants, :typeTime, :keyboards]
+  defstruct [:body, :chatId, :type, :to, :from] #, :id, :mention, :delay, :readReceiptRequested, :timestamp, :participants, :typeTime, :keyboards]
 
   def parse(json) do
     Poison.decode!(json, as: %Kik.Models.Message{})
