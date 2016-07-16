@@ -9,13 +9,9 @@ defmodule Kik.Models.Messages do
 end
 
 defmodule Kik.Models.Message do
-  @derive [Poison.Encoder]
+  @derive {Poison.Encoder, except: [:from]}
 
   defstruct [:body, :chatId, :type, :to, :from] #, :id, :mention, :delay, :readReceiptRequested, :timestamp, :participants, :typeTime, :keyboards]
-
-  def parse(json) do
-    Poison.decode!(json, as: %Kik.Models.Message{})
-  end
 
   @type t :: %Kik.Models.Message{
     body: String.t,
@@ -31,8 +27,6 @@ defmodule Kik.Models.Message do
     #participants: [String.t],
     #typeTime: integer,
     #keyboards: [],
-
-
   }
 end
 
