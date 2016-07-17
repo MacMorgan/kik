@@ -42,8 +42,14 @@ defmodule Kik do
     |> process_response
   end
 
+  def send([%Kik.Models.Message{}] = messages) do
+    %Kik.Models.Messages{
+      messages: messages
+    }
+    |> send
+  end
+
   def send(%Kik.Models.Message{} = message) do
-    Logger.debug "GOT HERE"
     [message]
     |> send
   end
